@@ -5,7 +5,6 @@ import $ from 'jquery';
 import RoutingLayout from './pages/RoutingLayout';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Logout from './pages/Logout';
 import Register from './pages/Register';
 import Main from './pages/Main';
 import PostDetail from './pages/PostDetail';
@@ -22,7 +21,6 @@ export default function MainApp(){
         <Route index element={<Home/>}/>
         <Route path='/' element={<RoutingLayout/>}>
           <Route path='login' element={<Login/>}/>
-          <Route path='logout' element={<Logout/>}/>
           <Route path='register' element={<Register/>}/>
           <Route path='main' element={<Main/>}/>
           <Route path='postdetail' element={<PostDetail/>}/>

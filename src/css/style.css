@@ -774,3 +774,21 @@ summary > aside{
     border-radius: 50%;
     cursor: pointer;
 }
+
+.logout{
+    cursor: pointer;
+    text-decoration: underline;
+    color: black;
+}
+
+.content{
+    width: fit-content;
+    border: 1px solid black;
+    cursor: pointer;
+}
+
+.content-img{
+    width: 120px;
+    height: 120px;
+    background-color: #2D428B;
+}
