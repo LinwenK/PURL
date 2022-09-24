@@ -1,6 +1,10 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 
-const RoutingLayout = () => {
+const RoutingLayout = (props) => {
+  //linwen
+  const loggedUser = props.loggedUser;
+  //
+
   const navigate = useNavigate();
   const goToMain = () => {
     navigate("/");
@@ -8,7 +12,8 @@ const RoutingLayout = () => {
   const logout = () => {
     navigate("/");
   }
-  return(
+
+  return( 
     <>
       <nav>
         <aside className="logo" onClick={goToMain}></aside>
@@ -20,6 +25,11 @@ const RoutingLayout = () => {
           <details>
             <summary><aside></aside></summary>
             <ul>
+              {/* linwen */}
+            <li>
+                    <Link to="/login">Login</Link>
+                    </li>
+
               <li><Link to="/addpost">Add a post</Link></li>
               <li><Link to="/dashboard">Edit post</Link></li>
               <li><Link to="/edituser">Edit user</Link></li>
