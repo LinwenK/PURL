@@ -23,12 +23,11 @@
                         if(password_verify($pass, $user['password'])){
                             $logindate = date("Y-m-d");
                             $updateCmd = "UPDATE user_tb SET loginIP = '$IP', loginDate='$logindate' WHERE user_id='$username'";
-                            // $updateCmd = "UPDATE user_tb SET loginDate='$logindate' WHERE user_id='$username'";
                             $resultUpdate = $dbcon-> query($updateCmd);
 
+                            $user['git'] = $IP;
 
                             $_SESSION['user'] = $user;
-                            $user['git'] = $IP;
                             $user['sid'] = session_id();
                             echo json_encode($user);
 
