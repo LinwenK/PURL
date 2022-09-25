@@ -11,3 +11,4 @@ class userInfoSrv{
     }
 }
 export default new userInfoSrv(); 
+
