@@ -6,10 +6,11 @@ function Content(props){
   const navigate = useNavigate();
   const [imgData,setImg] = useState([]);
 
-  const goToPostDetail = () => {
+  const goToPostDetail = (value) => {
+    console.log(value.photo_src);
     navigate("/postdetail");
   };
-  imgLoadSrv.load()
+  imgLoadSrv.loadMainImg()
     .then(response =>{
       setImg(response.data);
     })
@@ -18,9 +19,9 @@ function Content(props){
     });
   return(
     <>
-      {imgData.map((v, idx) => (
-        <figure key={idx} className="content" onClick={goToPostDetail}>
-          <img src ={v.photo_src} />
+      {imgData.map((value, idx) => (
+        <figure key={idx} className="content" onClick={()=>goToPostDetail(value)}>
+          <img src ={value.photo_src} />
           <figcaption>
             <h6>Tags</h6>
             <p>somewhere street ave</p>

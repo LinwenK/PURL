@@ -1,4 +1,4 @@
 import axios from "axios";
 export default axios.create({
-    baseURL: "http://localhost/PURL/react/src/php"
+    baseURL: "http://localhost/react/PURL/src/php"
 })

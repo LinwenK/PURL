@@ -1,16 +1,11 @@
 import httpCommon from "./http-common";
 
 class imgLoadSrv{
-<<<<<<< HEAD
-    load(data){
-        return httpCommon.post("/main.php",data);
-    }
-}
-
-=======
-    load(){
+    loadMainImg(){
         return httpCommon.post("/main.php");
     }
+    loadDetainImg(formData){
+        return httpCommon.post("/postDetail.php");
+    }
 }
->>>>>>> jun
 export default new imgLoadSrv();
