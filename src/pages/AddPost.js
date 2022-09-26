@@ -29,7 +29,7 @@ function AddPost(){
 
   const navigate = useNavigate();
   const goToPostDashboard = () => {
-    navigate("/postdashboard");
+    navigate("/dashboard");
   };
 
   return(
