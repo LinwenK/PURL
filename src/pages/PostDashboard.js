@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import dashboardLoad from "../services/dashboardLoad";
 import EditPost from "./EditPost";
+import AddPost from "./AddPost";
 import { tab } from "@testing-library/user-event/dist/tab";
 
 function Rows(props){
@@ -49,6 +50,8 @@ function PostDashboard(props){
   .catch(err=>{
     console.log(err);
   });
+
+  
 
   return(
     <>
