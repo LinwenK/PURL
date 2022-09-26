@@ -47,7 +47,7 @@ export default function MainApp(){
           <Route path='addpost' element={<AddPost/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>
           <Route path='editpost' element={<EditPost Post={post}/>}/>
-          <Route path='edituser' element={<EditUser/>}/>
+          <Route path='edituser' element={<EditUser User={user} editUserFun={LoginFunction}/>}/>
         </Route>
         <Route path='*' element={<NoPage/>}/>
       </Routes>
