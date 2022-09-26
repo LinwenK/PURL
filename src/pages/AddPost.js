@@ -36,10 +36,6 @@ function AddPost(){
     <>
       <h1>Add Post Page</h1>
       <form onSubmit={goToPostDashboard}>
-        <input name="user_id" placeholder="Your user ID"required/><br/>
-        <input name="user_uid" placeholder="Your user_uid"required/><br/>
-        <input name="post_uid" placeholder="Your post uid"  required/><br/>
-        <input type="date" name="post_data" placeholder="Upload date" required/><br/>
         <input type="file"
          name="photo_src" placeholder="Photo data" required/><br/>
         <input name="tags" placeholder="Tags" required/><br/>
