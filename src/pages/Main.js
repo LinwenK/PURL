@@ -1,30 +1,31 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { useNavigate} from 'react-router-dom';
-import imgLoadSrv from '../services/imgLoadSrv';
+import imgLoadSrv from '../services/postLoadSrv';
 
-function Content(props){
+function Content(){
   const navigate = useNavigate();
-  const [imgData,setImg] = useState([]);
-
-  const goToPostDetail = (value) => {
-    console.log(value.photo_src);
-    navigate("/postdetail");
+  const [PostData,setPost] = useState([]);
+  const goToPostDetail = (idx) => {
+    // console.log(imgData);
+    // console.log(idx);
+    sessionStorage.setItem('pData', JSON.stringify(PostData));
+    navigate("/postdetail",{state: idx} );
   };
-  imgLoadSrv.loadMainImg()
+  imgLoadSrv.loadMainPost()
     .then(response =>{
-      setImg(response.data);
+      setPost(response.data);
     })
     .catch(err=>{
       console.log(err);
     });
   return(
     <>
-      {imgData.map((value, idx) => (
-        <figure key={idx} className="content" onClick={()=>goToPostDetail(value)}>
-          <img src ={value.photo_src} />
+      {PostData.map((value, idx) => (
+        <figure key={idx} className="content" onClick={()=>goToPostDetail(idx)}>
+          <img src ={value.photo_src} alt ={'img_'+idx}/>
           <figcaption>
             <h6>Tags</h6>
-            <p>somewhere street ave</p>
+            <p>{value.tags}</p>
           </figcaption>
         </figure>
       ))}
@@ -32,7 +33,7 @@ function Content(props){
   )
 }
 
-function Main(props){
+function Main(){
   // localStorage.setItem("userId", "cweald9")
   // const loggedUser = props.loggedUser;
   return(
