@@ -6,6 +6,7 @@
         $dbServername = "localhost";
         $dbPass = "";
         $dbName = "purl_db";
+
         $username = $_POST['uName'];
         $pass = $_POST['pass'];
         $IP = $_POST['gip'];
@@ -24,13 +25,15 @@
                             $logindate = date("Y-m-d");
                             $updateCmd = "UPDATE user_tb SET loginIP = '$IP', loginDate='$logindate' WHERE user_id='$username'";
                             $resultUpdate = $dbcon-> query($updateCmd);
+                            $dbcon->close();
 
                             $user['git'] = $IP;
 
                             $_SESSION['user'] = $user;
+                            $_SESSION['timeout'] = time()+  (60*60);
+
                             $user['sid'] = session_id();
                             echo json_encode($user);
-
                             exit();
 
                         }

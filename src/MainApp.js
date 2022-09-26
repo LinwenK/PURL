@@ -1,6 +1,7 @@
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import $ from 'jquery';
+import userInfo from './services/userInfo';
 
 
 import RoutingLayout from './pages/RoutingLayout';
@@ -27,17 +28,24 @@ export default function MainApp(){
   const pageLoad = ()=>{
         let sid = sessionStorage.getItem("sid");
         if(sid!=null){
-            $.ajax({
-                type:"POST",
-                url:"http://localhost/reactServer/sidChk.php",
-                data:{sid:user.sid},
-                success(data){
-                    setUser(JSON.parse(data));
-
-                }
-            })
-        } 
+          userInfo.loadInfo(sid)
+                .then(response=>{
+                    setUser(response.data)
+                })
+                .catch(err=>{console.log(err)});
+      }
     };
+    //         $.ajax({
+    //             type:"POST",
+    //             url:"http://localhost/reactServer/sidChk.php",
+    //             data:{sid:user.sid},
+    //             success(data){
+    //                 setUser(JSON.parse(data));
+
+    //             }
+    //         })
+    //     } 
+    // };
   useEffect(()=>{pageLoad()},[user]);
     //
 
