@@ -6,6 +6,7 @@ import deletePostSrv from "../services/deletePostSrv";
 function Rows(props){
   const navigate = useNavigate();
   const goToEditPost = () => {
+    props.EditPostFunc(props.table[props.index]);
     navigate("/editpost");
   };
 
@@ -35,9 +36,10 @@ function Rows(props){
 }
 
 function PostDashboard(props){
+  const user = props.User;
   const [table,setTable] = useState([]);
 
-  dashboardLoad.load()
+  dashboardLoad.load(user.user_id)
   .then(response =>{
     setTable(response.data);
   })
@@ -64,7 +66,7 @@ function PostDashboard(props){
         </thead>
         <tbody>
           {table.map((post,idx)=>{
-            return <Rows key={idx} post={post} index={idx} table={table} /> 
+            return <Rows key={idx} post={post} index={idx} table={table} EditPostFunc={props.EditPostFunc}/> 
           })}
         </tbody>
       </table>      

@@ -8,7 +8,7 @@
             echo "Connection Failed".$dbCon->connect_error;
         }else{
             $resultArray = [];
-            $displayCmd = "SELECT * FROM post_tb";
+            $displayCmd = "SELECT * FROM post_tb WHERE user_id = '".$_POST['uid']."'";
             $result = $dbCon->query($displayCmd);
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){

@@ -1,7 +1,13 @@
 import httpCommon from "./http-common";
 class dashboardLoad{
-    load(){
-        return httpCommon.post("/display.php");
+    load(data){
+        let formdata = new FormData();
+        formdata.append("uid", data);
+        return httpCommon.post("/display.php", formdata, {
+            headers: {
+              'content-type':'multipart/form-data'
+            }
+        });
     }
 }
 
