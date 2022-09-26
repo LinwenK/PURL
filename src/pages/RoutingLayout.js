@@ -1,4 +1,5 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
+import searchPost from "../service/searchPost";
 
 const RoutingLayout = () => {
   const navigate = useNavigate();
@@ -8,15 +9,30 @@ const RoutingLayout = () => {
   const logout = () => {
     navigate("/");
   }
+
+  
+  searchPost.search()
+	.then(response =>{
+		console.log(response);
+	})
+	.catch(err=>{
+		console.log(err);
+	});
+
+
   return(
     <>
       <nav>
         <aside className="logo" onClick={goToMain}></aside>
         <div>
-          <form>
+          
+          {/* SEACHBAR */}
+          <form method="POST" action="">
             <input type='text' placeholder="Enter the keyword"/>
             <button type="submit">Search</button>
           </form>
+          {/* SEACHBAR */}
+
           <details>
             <summary><aside></aside></summary>
             <ul>
