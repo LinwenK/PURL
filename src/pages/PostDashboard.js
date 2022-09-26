@@ -1,11 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import {useState} from "react";
 import dashboardLoad from "../services/dashboardLoad";
+import EditPost from "./EditPost";
 import { tab } from "@testing-library/user-event/dist/tab";
 
 function Rows(props){
   const navigate = useNavigate();
-  const goToEditPost = (index) => {
+  const goToEditPost = () => {
+    this.props.title.push({
+      pathname: '/editpost'
+    });
     navigate("/editpost");
   };
 
@@ -21,22 +25,22 @@ function Rows(props){
       <td><img src={props.table[props.index].photo_src}/></td>
       <td>{props.table[props.index].tags}</td>
       <td>{props.table[props.index].addr}</td>
-      <td><button onClick={deletePost}>Delete Post</button></td>
       <td><button onClick={goToEditPost}>Edit Post</button></td>
+      <td><button onClick={deletePost}>Delete Post</button></td>
     </tr>
   )
 }
 
 function PostDashboard(props){
   const [table,setTable] = useState([]);
-  const [postdata,setPostdata] = useState({
-    userId:"",
-    postUid:"",
-    postDate:"",
-    photoSrc:"",
-    tags:"",
-    addr:""
-  });
+  // const [postdata,setPostdata] = useState({
+  //   userId:"",
+  //   postUid:"",
+  //   postDate:"",
+  //   photoSrc:"",
+  //   tags:"",
+  //   addr:""
+  // });
 
   dashboardLoad.load()
   .then(response =>{

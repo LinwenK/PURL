@@ -1,6 +1,6 @@
 <?php
     include "./config.php";
-    header ("Access-CONtrol-Allow-Origin:http://localhost:3000");
+    header ("Access-CONtrol-Allow-Origin:http://localhost:3001");
 
     if($_SERVER['REQUEST_METHOD']=='POST'){
         $dbCon = new mysqli($dbServername, $dbUsername, $dbPass, $dbName);
