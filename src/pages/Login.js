@@ -33,7 +33,8 @@ function Login(props){
                 setLogin(true);
                 props.loginFun(response.data);
                 sessionStorage.setItem("sid", response.data.sid);
-                // sessionStorage.setItem("user", response.data.user);
+                // sessionStorage.setItem("user_id", response.data.user_id);
+
                 setErr(null);
                 navigate('/main');
             })
@@ -88,7 +89,7 @@ function Login(props){
                 <input type="text" name="uName" placeholder="Write username" required/>
                 <input type="password" name="pass" ref={passInput}placeholder="Write password" required/>
 
-                
+
                 <button type='button' onClick={(event)=>inputFocus(event)}>Show Password</button>
 
                 <button type="submit">Login</button>
