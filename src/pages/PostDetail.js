@@ -43,6 +43,8 @@ function PostDetail(){
             <figcaption>
               <h6>Tags</h6>
               <p>{value.tags}</p>
+              <iframe width={450} height={250} frameBorder="0" style={{border:0}} referrerPolicy="no-referrer-when-downgrade" src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBunR-4sODBjn5hcvBJmzf9L7_pKF905R4&q=${value.addr}`}
+          allowFullScreen></iframe>
             </figcaption> 
           </figure>:false
         ))}
