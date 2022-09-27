@@ -1,20 +1,53 @@
 // import { map } from 'jquery';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import {json, useLocation} from 'react-router-dom';
 
 function PostDetail(){
   const location = useLocation();
   const imgIdx = location.state;
-  const [postIdx,setPost]=useState([]);
+    console.log("first : "+imgIdx);
+  const [postIdx,setPostIdx]=useState("");
   const pData = JSON.parse(sessionStorage.pData);
+  
+  // setPostIdx(imgIdx);
+  useEffect(()=>{
+    setPostIdx(imgIdx);
+    console.log("i" + imgIdx);
+    console.log("p"+postIdx);
+  })
+
+  const previousPost = (event)=>{
+    event.preventDefault();
+    // if(postIdx <= 0){
+    //   console("idx 0!!!!!!");
+    //   setPostIdx(0);
+    // }else{
+    //   setPostIdx((idx)=>{
+    //     return idx-1;
+    //   })
+    //   console.log("1234"+postIdx);
+    // }
+
+  } 
+  
+  const nextPost = ()=>{
+    console.log("next");
+    console.log("next"+imgIdx);
+    if(imgIdx <= 0 ){
+      imgIdx = 0;
+    }else{
+      imgIdx ++;
+      setPostIdx(imgIdx);
+    }
+  }
 
   return(
     <>
       <h1>PostDetail Page</h1>
       <section>
         {pData.map((value,idx)=>(
-          idx == imgIdx ? 
-          <figure>
+          idx == postIdx ? 
+          <figure key={idx}>
             <img src ={value.photo_src} alt ={'img_'+idx}/> 
             <figcaption>
               <h6>Tags</h6>
@@ -23,7 +56,7 @@ function PostDetail(){
           </figure>:false
         ))}
         {pData.map((value,idx)=>(
-          idx == imgIdx ? 
+          idx == postIdx ? 
             <article key={idx}>
               <figure>
                 <img src = {value.photo_src} />
@@ -42,8 +75,8 @@ function PostDetail(){
                   <button>Download</button>
                 </div>
                 <div>
-                  <button>{"<"}</button>
-                  <button>{">"}</button>
+                  <button onClick={(event)=>previousPost(event)}>{"<"}</button>
+                  <button onClick={nextPost}>{">"}</button>
                 </div>
               </section>
             </article>:false))}
