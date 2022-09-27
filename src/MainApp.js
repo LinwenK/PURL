@@ -18,6 +18,7 @@ import userInfo from './services/userInfo';
 export default function MainApp(){
   const [user,setUser] = useState("");
   const [post,setPost] = useState();
+  const [imgData,setImg] = useState([]);
 
   const LoginFunction = (userInput) =>{
     setUser(userInput);
@@ -38,16 +39,16 @@ export default function MainApp(){
   return(
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home/>}/>
-        <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction}/>}>
+        <Route index element={<Home loggedUser={user}/>}/>
+        <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction} setImg={setImg}/>}>
           <Route path='login' element={<Login loginFun={LoginFunction}/>}/>
           <Route path='register' element={<Register/>}/>
-          <Route path='main' element={<Main/>}/>
-          <Route path='postdetail' element={<PostDetail/>}/>
-          <Route path='addpost' element={<AddPost/>}/>
+          <Route path='main' element={<Main setImg={setImg} imgData={imgData}/>}/>
+          <Route path='postdetail' element={<PostDetail imgData={imgData}/>}/>
+          <Route path='addpost' element={<AddPost User={user}/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>
           <Route path='editpost' element={<EditPost Post={post}/>}/>
-          <Route path='edituser' element={<EditUser/>}/>
+          <Route path='edituser' element={<EditUser User={user} editUserFun={LoginFunction}/>}/>
         </Route>
         <Route path='*' element={<NoPage/>}/>
       </Routes>

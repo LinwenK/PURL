@@ -16,7 +16,6 @@
                 }
                 echo json_encode($resultArray);
             }else{  
-                echo "No data";
                 $dbCon->close();
             }
         }
