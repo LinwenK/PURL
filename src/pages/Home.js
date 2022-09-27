@@ -10,10 +10,10 @@ function Home(){
         </video>
         <div id = 'option'>
             <div className='button1'> 
-                <Link to="/main">Explore this world</Link>
+                <Link to="/main" id="go">Explore this world</Link>
             </div> 
             <div className='button2'>
-                <Link to="/login">Log in</Link>
+                <Link to="/login" id="gologin">Log in</Link>
             </div>   
         </div>
       </div>

@@ -13,7 +13,7 @@ import PostDashboard from './pages/PostDashboard';
 import EditPost from './pages/EditPost';
 import EditUser from './pages/EditUser';
 import NoPage from './pages/NoPage';
-import userInfo from './services/userInfo';
+import userInfo from './services/userInfo'; 
 
 export default function MainApp(){
   const [user,setUser] = useState("");

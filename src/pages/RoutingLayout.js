@@ -1,5 +1,6 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import logoimg from '../img/logo.png';
 
 const RoutingLayout = (props) => {
   const navigate = useNavigate();
@@ -13,10 +14,15 @@ const RoutingLayout = (props) => {
       navigate('/');
     }
   }
+
   return(
     <>
       <nav>
-        <aside className="logo" onClick={goToMain}></aside>
+        {/* <aside className="logo" onClick={goToMain}></aside> */}
+        <figure class="intro-photo">
+            <img src={logoimg} className="logo" onClick={goToMain} alt="logo photo"/>
+
+        </figure>
         <div>
           <form>
             <input type='text' placeholder="Enter the keyword"/>

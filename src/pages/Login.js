@@ -12,7 +12,7 @@ function Login(props){
     navigate("/register");
   } 
 
-  const passInput = useRef();
+  const passInput = useRef(); 
   
   const [Ip,setIp] = useState('');
   globalIP.getIP().then(data=>setIp(data));
@@ -50,7 +50,7 @@ function Login(props){
 }
   return(
     <>
-      <h1>Login Page</h1>
+      <div id="login">
         <form onSubmit={(event) => login(event)}>
           <input type="hidden" name="gip" value={Ip}/>
           <input type="text" name="uName" placeholder="Write username" required/>
@@ -60,6 +60,7 @@ function Login(props){
         </form>
         {err!==null ? <h1>{err}</h1> : null}
       <button onClick={goToRegister}>Create an account</button>
+      </div>
     </>
   )
 }

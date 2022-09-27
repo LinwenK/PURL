@@ -18,15 +18,17 @@ function Content(props){
     });
   return(
     <>
+      <div id="mainpost">
       {imgData.map((v, idx) => (
         <figure key={idx} className="content" onClick={goToPostDetail}>
-          <img src ={v.photo_src} />
+          <img src ={v.photo_src} width="200" height="200"/>
           <figcaption>
             <h6>Tags</h6>
             <p>somewhere street ave</p>
           </figcaption>
         </figure>
       ))}
+      </div>
     </>
   )
 }
