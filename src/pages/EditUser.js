@@ -6,10 +6,10 @@ function EditUser(props) {
   let userData = props.User;
   const navigate = useNavigate();
 
-	const [input, setInput] = useState({
-		email: userData.email,
-    dob: userData.birthday,
-    gender: userData.gender
+	const [inputval, setInput] = useState({
+		email: props.User.email,
+    dob: props.User.birthday,
+    gender: props.User.gender
 	});
 
   const editUserFunc = (event) => {
@@ -21,9 +21,9 @@ function EditUser(props) {
     .then(response =>{
       console.log(response);
       if(response.data == "DONE"){
-        props.editUserFun(p=>{
-          return({...p, email:input.email, dob:input.dob, gender:input.gender})
-        })
+        props.editUserFun(p=>(
+          {...p, email:inputval.email, birthday:inputval.dob, gender:inputval.gender}
+          ))
         navigate("/main")
       }
     })
@@ -31,65 +31,26 @@ function EditUser(props) {
       console.log(err);
     });
   }
-	
 
 	const onInputChange = (e) => {
-		const { name, value } = e.target;
 		setInput(prev => ({
 			...prev,
-			[name]: value
+			[e.target.name]: e.target.value
 		}));
-		// validateInput(e);
 	};
-  // const validateInput = (e) => {
-  //   let { name, value } = e.target;
-  //   setError(prev => {
-  //     	const stateObj = { ...prev, [name]: "" };
-  //   	switch (name) {
-	// 		case "uName":
-	// 			if (!value) {
-	// 			stateObj[name] = "Please enter new Username.";
-	// 			}
-	// 		break;
-	// 		case "email":
-	// 			if (!value) {
-	// 			stateObj[name] = "Please enter new Email.";
-	// 			}
-	// 		break;
-	// 		case "pass":
-	// 			if (!value) {
-	// 			stateObj[name] = "Please enter new Password.";
-	// 			} else if (input.confirmPass && value !== input.confirmPass) {
-	// 			stateObj["confirmPass"] = "Password and Confirm Password does not match.";
-	// 			} else {
-	// 			stateObj["confirmPass"] = input.confirmPass ? "" : error.confirmPass;
-	// 			}
-	// 		break;
-	// 		case "confirmPass":
-	// 			if (!value) {
-	// 			stateObj[name] = "Please confirm the new Password.";
-	// 			} else if (input.pass && value !== input.pass) {
-	// 			stateObj[name] = "Password and Confirm Password does not match.";
-	// 			}
-	// 		break;
-	// 		default:
-	// 		break;
-  //     	}
-  //     	return stateObj;
-  //   });
-  // };
+
   return (
     <form method='POST' onSubmit={(event)=>editUserFunc(event)}>
-		  <input type='email' name='email' placeholder='Enter new email' value={input.email} onChange={onInputChange}
+		  <input type='email' name='email' placeholder='Enter new email' value={inputval.email} onChange={onInputChange}
 			required/>
-		  <input type='date' name='dob' value={input.dob} required></input>
-		  <select name='gender' required>
-        <option defaultValue={input.gender} disabled>Gender</option>
-        <option defaultValue={input.gender}>Female</option>
-        <option defaultValue={input.gender}>Male</option>
-        <option defaultValue={input.gender}>Non-binary</option>
-        <option defaultValue={input.gender}>Other</option>
-        <option defaultValue={input.gender}>Prefer not to say</option>
+		  <input type='date' name='dob' value={inputval.dob} onChange={onInputChange} required></input>
+		  <select name='gender' defaultValue={inputval.gender} onChange={onInputChange} required>
+        <option disabled>Gender</option>
+        <option>Female</option>
+        <option>Male</option>
+        <option>Non-binary</option>
+        <option>Other</option>
+        <option>Prefer not to say</option>
 		  </select>
       <button type='submit'>Submit</button> 
     </form>

@@ -42,7 +42,7 @@ export default function MainApp(){
         <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction}/>}>
           <Route path='login' element={<Login loginFun={LoginFunction}/>}/>
           <Route path='register' element={<Register/>}/>
-          <Route path='main' element={<Main/>}/>
+          <Route path='main' element={<Main User={user}/>}/>
           <Route path='postdetail' element={<PostDetail/>}/>
           <Route path='addpost' element={<AddPost/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>

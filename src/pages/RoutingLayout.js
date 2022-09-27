@@ -1,11 +1,13 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import searchPost from "../services/searchPost";
 
 const RoutingLayout = (props) => {
   const navigate = useNavigate();
   const goToMain = () => {
     navigate("/");
   }
+  
   const logout = () => {
     if(sessionStorage.getItem('sid') != null){
       sessionStorage.removeItem('sid');
@@ -13,13 +15,26 @@ const RoutingLayout = (props) => {
       navigate('/');
     }
   }
+
+  const search = (event) => {
+    event.preventDefault();
+    let formData = new FormData();
+    searchPost.search(formData)
+    .then(response =>{
+      console.log(response);
+    })
+    .catch(err=>{
+      console.log(err);
+    });
+  }
+
   return(
     <>
       <nav>
         <aside className="logo" onClick={goToMain}></aside>
         <div>
-          <form>
-            <input type='text' placeholder="Enter the keyword"/>
+          <form onSubmit={(event)=>search(event)}>
+            <input type='text' name="key" placeholder="Enter the keyword"/>
             <button type="submit">Search</button>
           </form>
           <details>
