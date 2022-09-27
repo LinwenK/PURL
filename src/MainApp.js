@@ -18,6 +18,7 @@ import userInfo from './services/userInfo';
 export default function MainApp(){
   const [user,setUser] = useState("");
   const [post,setPost] = useState();
+  const [imgData,setImg] = useState([]);
 
   const LoginFunction = (userInput) =>{
     setUser(userInput);
@@ -39,10 +40,10 @@ export default function MainApp(){
     <BrowserRouter>
       <Routes>
         <Route index element={<Home/>}/>
-        <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction}/>}>
+        <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction} setImg={setImg}/>}>
           <Route path='login' element={<Login loginFun={LoginFunction}/>}/>
           <Route path='register' element={<Register/>}/>
-          <Route path='main' element={<Main User={user}/>}/>
+          <Route path='main' element={<Main setImg={setImg} imgData={imgData}/>}/>
           <Route path='postdetail' element={<PostDetail/>}/>
           <Route path='addpost' element={<AddPost/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>

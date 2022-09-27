@@ -4,26 +4,28 @@ import imgLoadSrv from '../services/imgLoadSrv';
 
 function Content(props){
   const navigate = useNavigate();
-  const [imgData,setImg] = useState([]);
 
   const goToPostDetail = () => {
     navigate("/postdetail");
   };
-  imgLoadSrv.load()
+  
+  useEffect(()=>{
+    imgLoadSrv.load()
     .then(response =>{
-      setImg(response.data);
+      props.setImg(response.data);
     })
     .catch(err=>{
       console.log(err);
     });
+  }, []);
   return(
     <>
-      {imgData.map((v, idx) => (
+      {props.imgData.map((v, idx) => (
         <figure key={idx} className="content" onClick={goToPostDetail}>
           <img src ={v.photo_src} />
           <figcaption>
             <h6>Tags</h6>
-            <p>somewhere street ave</p>
+            <p>{v.tags}</p>
           </figcaption>
         </figure>
       ))}
@@ -38,7 +40,7 @@ function Main(props){
     <>
       <h1>Main Page</h1>
       {/* <Content user={loggedUser}/> */}
-      <Content />
+      <Content setImg={props.setImg} imgData={props.imgData}/>
     </>
   )
 }

@@ -2,8 +2,7 @@
     require './config.php';
     header("Access-Control-Allow-Origin: http://localhost:3000");
     if($_SERVER['REQUEST_METHOD'] == "POST"){
-        $keyword = $_POST["key"];
-        echo $keyword;
+        $keyword = $_POST["keyword"];
         $res = "";
         $dbCon = new mysqli($dbServername,$dbUsername,$dbPass,$dbname);
         if(isset($_POST["keyword"]) && (strlen($_POST["keyword"]) > 2)){
@@ -48,5 +47,7 @@
             }
         }
     }
-    echo json_encode($res);
+    if($res != ""){
+        echo $res;
+    }
 ?>

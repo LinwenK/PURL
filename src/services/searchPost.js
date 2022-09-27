@@ -1,7 +1,7 @@
 import httpCommon from "./http-common";
 class searchPostSrv{
-    search(){
-        return httpCommon.post("/search.php");
+    search(data){
+        return httpCommon.post("/search.php", data);
     }
 }
 export default new searchPostSrv();

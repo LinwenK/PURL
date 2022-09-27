@@ -3,6 +3,7 @@ import { useState } from "react";
 import searchPost from "../services/searchPost";
 
 const RoutingLayout = (props) => {
+  const [err, setErr] = useState();
   const navigate = useNavigate();
   const goToMain = () => {
     navigate("/");
@@ -18,10 +19,15 @@ const RoutingLayout = (props) => {
 
   const search = (event) => {
     event.preventDefault();
-    let formData = new FormData();
+    let formData = new FormData(event.target);
     searchPost.search(formData)
     .then(response =>{
-      console.log(response);
+      if((typeof response.data) == "object"){
+        props.setImg(response.data);
+        setErr();
+      }else{
+        setErr(response.data);
+      }
     })
     .catch(err=>{
       console.log(err);
@@ -34,7 +40,7 @@ const RoutingLayout = (props) => {
         <aside className="logo" onClick={goToMain}></aside>
         <div>
           <form onSubmit={(event)=>search(event)}>
-            <input type='text' name="key" placeholder="Enter the keyword"/>
+            <input type='text' name="keyword" placeholder="Enter the keyword"/>
             <button type="submit">Search</button>
           </form>
           <details>
@@ -49,6 +55,7 @@ const RoutingLayout = (props) => {
           </details>
         </div>
       </nav>
+      {err != null ? <h1>{err}</h1> : null}
       <Outlet/>
     </>
   );
