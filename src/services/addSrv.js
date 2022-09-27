@@ -1,13 +1,7 @@
 import httpCommon from "./http-common";
 class addSrv{
-    add(){
-        let formdata = new FormData();
-        formdata.append("uid",uid);
-        return httpCommon.post("/addPost.php", formdata,{
-            headers: {
-                'content-type':'multipart/form-data'
-            }
-        });
+    add(data){
+        return httpCommon.post("/addPost.php", data);
     }
-}
+};
 export default new addSrv();

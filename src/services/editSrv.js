@@ -1,6 +1,7 @@
 import httpCommon from "./http-common";
 class editSrv{
     edit(data){
+        console.log("data: ", data)
         return httpCommon.post("/editPost.php", data);
     }
 }

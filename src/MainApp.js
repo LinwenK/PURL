@@ -44,10 +44,10 @@ export default function MainApp(){
           <Route path='register' element={<Register/>}/>
           <Route path='main' element={<Main/>}/>
           <Route path='postdetail' element={<PostDetail/>}/>
-          <Route path='addpost' element={<AddPost/>}/>
+          <Route path='addpost' element={<AddPost User={user}/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>
           <Route path='editpost' element={<EditPost Post={post}/>}/>
-          <Route path='edituser' element={<EditUser/>}/>
+          <Route path='edituser' element={<EditUser User={user} editUserFun={LoginFunction}/>}/>
         </Route>
         <Route path='*' element={<NoPage/>}/>
       </Routes>
