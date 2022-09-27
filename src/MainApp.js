@@ -39,7 +39,7 @@ export default function MainApp(){
   return(
     <BrowserRouter>
       <Routes>
-        <Route index element={<Home/>}/>
+        <Route index element={<Home loggedUser={user}/>}/>
         <Route path='/' element={<RoutingLayout loggedUser={user} LogoutFunc={LoginFunction} setImg={setImg}/>}>
           <Route path='login' element={<Login loginFun={LoginFunction}/>}/>
           <Route path='register' element={<Register/>}/>

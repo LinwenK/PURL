@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import vidsrc from '../img/home.mp4'
 
-function Home(){
+function Home(props){
   return(
     <>
       <div id = 'home'>
@@ -12,9 +12,7 @@ function Home(){
             <div className='button1'> 
                 <Link to="/main">Explore this world</Link>
             </div> 
-            <div className='button2'>
-                <Link to="/login">Log in</Link>
-            </div>   
+            {props.loggedUser == "" ? <div className='button2'><Link to="/login">Log in</Link></div> : null}
         </div>
       </div>
     </>
