@@ -64,7 +64,6 @@ function PostDetail(){
                   <h3>{value.tags}</h3>
                 </div>
                 <div>
-                  <button>location</button>
                   <a href={value.photo_src} download>Download</a>
                 </div>
                 <div>
