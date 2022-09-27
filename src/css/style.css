@@ -98,60 +98,50 @@
 
 /************************* Login page *******************************/
 
-#loginOption{
-    position: absolute;
+#login{
+    /* position: absolute;
     z-index: 1;
     width: 100%;
-    height: 30%;
-    font-size: 23px;
+    height: 30%; */
+    /* font-size: 23px; */
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    /* column-gap: 20%; */
+
+    border: 1px solid black;
 }
 
-#login .button1{
 
-    z-index: 1;
-    width: 50%;
-    height: 100%;
-    padding-right: 1%;
-    display: flex;
-    justify-content: right;
-    align-items: center;
+#login .loginForm{
 
-
-}
-
-#login .button2{
-
-    font-weight: 900;
+    /* font-weight: 900;
     z-index: 1;
     width: 50%;
     height: 100%;
     padding-left: 1%;
     display: flex;
     justify-content: left;
-    align-items: center;
+    align-items: center; */
 
 
-
-}
-
-#loginInfo{
-
-    z-index: 1;
+    /* z-index: 1;
     padding-top: 10%;
-    width: 25%;
-    height: 100%;
+    height: 100%; */
+
+    width: 30%;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     row-gap: 12%;
-    align-items: top;
-    font-size: 23px;
+    /* align-items: top;
+    font-size: 23px; */
+
+    border: 1px solid blue;
 
 }
+
 #login .q1, #login .q2{
 
     width: 100%;
@@ -201,28 +191,52 @@
 
 /************************* User page *******************************/
 
-.top-side{
-    height: 15%;
+/* Navigation */
+/* nav{
     display: flex;
-    column-gap: 40px;
-    width: 100%;
-    justify-content: space-evenly;
-    padding-top: 1%;
-    padding-bottom: 1%;
-    background-color: #2D428B;
-
+    justify-content: space-between;
+    align-items: center;
+    padding: 3% 4%;
+}  */
+/* 
+nav > div{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+    padding-right: 5%;
+} 
+  */
+nav ul{
+    position: absolute;
 }
-.top-side h1{
+
+summary{
+    display: flex;
+    justify-content: flex-end;
+}
+
+summary > aside{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: blue;
+    cursor: pointer;
+}
+
+
+/* .top-side h1{
     font-weight: 900;
     line-height: 1.5;
     letter-spacing: 3px;
 
     width: fit-content;
     border-bottom: 3px solid whitesmoke;
-}
+} */
 
 .intro-photo{
-    width: 10%;
+    border: 1px solid red;
+    width: 8%;
     display: flex;
     align-items: center;
     column-gap: 20px;
@@ -230,9 +244,12 @@
 }
 
 .intro-photo img{
+    border: 1px solid red;
+
     border: 5px solid whitesmoke;
     position: relative;
     width: 100%;
+    height: 100%;
     border-radius: 50%;
 }
 
@@ -759,19 +776,22 @@ tbody tr:nth-child(even){
     z-index: 1;
 }
 
+
+/************************* Temp page *******************************/
+
 /* For Video */
 #root{
     width: 100%;
 }
 
 /* Navigation */
-nav{
+/* nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 3% 4%;
-}
-
+} */
+/* 
 nav > div{
     display: flex;
     justify-content: space-between;
@@ -795,15 +815,15 @@ summary > aside{
     border-radius: 50%;
     background-color: blue;
     cursor: pointer;
-}
+} */
 
-.logo{
+/* .logo{
     width: 120px;
     height: 120px;
     background-color: navy;
     border-radius: 50%;
     cursor: pointer;
-}
+} */
 
 .logout{
     cursor: pointer;

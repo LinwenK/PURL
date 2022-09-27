@@ -38,7 +38,7 @@ function Login(props){
   useEffect(()=>{
     globalIP.getIP().then(data=>{setIp(data)});
   },[]);
-
+ 
   const inputFocus = (event)=>{
   if(event.target.innerText === "Show Password"){
       passInput.current.type = "text";
@@ -51,15 +51,24 @@ function Login(props){
   return(
     <>
       <div id="login">
-        <form onSubmit={(event) => login(event)}>
+        <h1>Log in</h1>
+        <form onSubmit={(event) => login(event)} class='loginForm'>
           <input type="hidden" name="gip" value={Ip}/>
+          <div class="q1">
+          <label>User ID</label>
           <input type="text" name="uName" placeholder="Write username" required/>
+          </div>
+
+          <div class="q2">
+          <label>Password</label>
           <input type="password" name="pass" ref={passInput}placeholder="Write password" required/>
           <button type='button' onClick={(event)=>inputFocus(event)}>Show Password</button>
+          </div>
+
           <button type="submit">Login</button>
         </form>
         {err!==null ? <h1>{err}</h1> : null}
-      <button onClick={goToRegister}>Create an account</button>
+      <button onClick={goToRegister} class='regBtn'>Create an account</button>
       </div>
     </>
   )

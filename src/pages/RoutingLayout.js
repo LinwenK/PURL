@@ -1,7 +1,7 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import logoimg from '../img/logo.png';
-
+ 
 const RoutingLayout = (props) => {
   const navigate = useNavigate();
   const goToMain = () => {
@@ -17,7 +17,7 @@ const RoutingLayout = (props) => {
 
   return(
     <>
-      <nav>
+      <nav class='top-side'>
         {/* <aside className="logo" onClick={goToMain}></aside> */}
         <figure class="intro-photo">
             <img src={logoimg} className="logo" onClick={goToMain} alt="logo photo"/>
