@@ -1,14 +1,13 @@
-import { useState,useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate} from 'react-router-dom';
 import imgLoadSrv from '../services/imgLoadSrv';
 
 function Content(props){
   const navigate = useNavigate();
-
-  const goToPostDetail = () => {
-    navigate("/postdetail");
+  const goToPostDetail = (idx) => {
+    sessionStorage.setItem('pData', JSON.stringify(props.imgData));
+    navigate("/postdetail",{state: idx} );
   };
-  
   useEffect(()=>{
     imgLoadSrv.load()
     .then(response =>{
@@ -20,12 +19,12 @@ function Content(props){
   }, []);
   return(
     <>
-      {props.imgData.map((v, idx) => (
-        <figure key={idx} className="content" onClick={goToPostDetail}>
-          <img src ={v.photo_src} />
+      {props.imgData.map((value, idx) => (
+        <figure key={idx} className="content" onClick={()=>goToPostDetail(idx)}>
+          <img src ={value.photo_src} alt ={'img_'+idx}/>
           <figcaption>
             <h6>Tags</h6>
-            <p>{v.tags}</p>
+            <p>{value.tags}</p>
           </figcaption>
         </figure>
       ))}

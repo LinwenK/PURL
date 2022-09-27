@@ -1,6 +1,7 @@
 import { Outlet, Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import searchPost from "../services/searchPost";
+import imgLoadSrv from "../services/imgLoadSrv";
 
 const RoutingLayout = (props) => {
   const [err, setErr] = useState();
@@ -27,6 +28,13 @@ const RoutingLayout = (props) => {
         setErr();
       }else{
         setErr(response.data);
+        imgLoadSrv.load()
+          .then(response =>{
+            props.setImg(response.data);
+          })
+          .catch(err=>{
+            console.log(err);
+          });
       }
     })
     .catch(err=>{

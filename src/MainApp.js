@@ -44,7 +44,7 @@ export default function MainApp(){
           <Route path='login' element={<Login loginFun={LoginFunction}/>}/>
           <Route path='register' element={<Register/>}/>
           <Route path='main' element={<Main setImg={setImg} imgData={imgData}/>}/>
-          <Route path='postdetail' element={<PostDetail/>}/>
+          <Route path='postdetail' element={<PostDetail imgData={imgData}/>}/>
           <Route path='addpost' element={<AddPost User={user}/>}/>
           <Route path='dashboard' element={<PostDashboard User={user} EditPostFunc={setPost}/>}/>
           <Route path='editpost' element={<EditPost Post={post}/>}/>
