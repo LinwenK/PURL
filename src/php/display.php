@@ -8,7 +8,8 @@
             echo "Connection Failed".$dbCon->connect_error;
         }else{
             $resultArray = [];
-            $displayCmd = "SELECT * FROM post_tb ORDER BY post_date DESC WHERE user_id = '".$_POST['uid']."'";
+
+            $displayCmd = "SELECT * FROM post_tb WHERE user_id = '".$_POST['uid']."' ORDER BY post_date DESC ";
             $result = $dbCon->query($displayCmd);
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
