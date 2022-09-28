@@ -9,7 +9,7 @@
             echo "Connection Failed".$dbCon->connect_error;
         }else{
             $array = [];
-            $imgCmd = "SELECT * FROM post_tb ORDER BY post_date DESC";
+            $imgCmd = "SELECT * FROM post_tb ORDER BY post_date DESC " ;
             $result = $dbCon->query($imgCmd);
             if($result->num_rows > 0){
                 while($row = $result->fetch_assoc()){
