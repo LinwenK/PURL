@@ -50,30 +50,48 @@ function Register(props){
   return(
     <>
       <div id="reg">
-      <form method="POST" onSubmit={(event) => register(event)}>
+      <h1>Greate Your Account</h1>
+
+      <form method="POST" onSubmit={(event) => register(event)} id='regForm'>
       <input type="hidden" name="gip" value={Ip}/>
+
+      <div class="q1">
 
       <label>User ID</label>
       <input name="user_id" placeholder="user id"  required/>
+      </div>
+
+      <div class="q2">
 
       <label>Password</label>
       <input type="password" name="pass" ref={passInput} placeholder="password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^*?]).{8,}" required/>
+      </div>
+      <div class="pw">
+      <button type='button' onClick={(event)=>inputFocus(event)} class="show">Show Password</button>
       <p>(At least eight characters, including at least one number/ one lower letters/ one uppercase letters / one special characters)</p>
-      <button type='button' onClick={(event)=>inputFocus(event)}>Show Password</button>
+      
+</div>
+      <div class="q3">
 
       <label>E-mail</label>
       <input type="email" name="email" placeholder="email" required/>
+      </div>
+
+      <div class="q4">
 
       <label>Gender</label>
-      <input name="gender" type = "radio" value="Male" required/>Male
-      <input name="gender" type = "radio" value="Female" required/>Female
-      <input name="gender" type = "radio" value="Non-binary" required/>Non-binary
-      <input name="gender" type = "radio" value="Prefer not to say" required/>Prefer not to say
-
+      <div class="q4option">
+      <input class = "q44" name="gender" type = "radio" value="Male" required/>Male
+      <input class = "q44" name="gender" type = "radio" value="Female" required/>Female
+      <input class = "q44" name="gender" type = "radio" value="Non-binary" required/>Non-binary
+      <input class = "q44" name="gender" type = "radio" value="Prefer not to say" required/>Prefer not to say
+      </div>
+      </div>
+      <div class="q5">
 
       <label>Birthday</label>
       <input type="date" name="dob" required/>
-
+      </div>
       <button type="submit">Register</button>
       </form>
     </div>

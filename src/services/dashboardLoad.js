@@ -9,6 +9,6 @@ class dashboardLoad{
             }
         });
     }
-}
+} 
 
 export default new dashboardLoad();

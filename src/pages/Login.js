@@ -5,7 +5,7 @@ import globalIP from '../services/globalIP';
 import loginService from '../services/loginService';
 
 
-function Login(props){
+function Login(props){ 
   const navigate = useNavigate();
 
   const goToRegister = () => {
@@ -50,16 +50,29 @@ function Login(props){
 }
   return(
     <>
-      <h1>Login Page</h1>
-        <form onSubmit={(event) => login(event)}>
+    <div id="login">
+      <h1>Welcome to PURL</h1>
+      {/* <h1>Log in</h1> */}
+        <form onSubmit={(event) => login(event)} id='loginForm'>
           <input type="hidden" name="gip" value={Ip}/>
+          <div class="q1">
+          <label>User ID</label>
           <input type="text" name="uName" placeholder="Write username" required/>
+          </div>
+
+          <div class="q2">
+          <label>Password</label>
           <input type="password" name="pass" ref={passInput}placeholder="Write password" required/>
-          <button type='button' onClick={(event)=>inputFocus(event)}>Show Password</button>
-          <button type="submit">Login</button>
+          
+          </div>
+          <button type='button' onClick={(event)=>inputFocus(event)} class="show">Show Password</button>
+
+          <button type="submit">Log In</button>
         </form>
         {err!==null ? <h1>{err}</h1> : null}
-      <button onClick={goToRegister}>Create an account</button>
+        <p>Don't have an account?</p>
+      <button onClick={goToRegister} class="gotoreg">Create an New Account</button>
+      </div>
     </>
   )
 }

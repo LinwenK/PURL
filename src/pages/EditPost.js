@@ -27,12 +27,21 @@ function EditPost(props){
 
   return(
     <>
-      <h1>Edit Post Page</h1>
-      <form onSubmit={(event)=>goToPostDashboard(event)}>
+      <div id="editP">
+      <h1>Edit Your Post</h1>
+      <form onSubmit={(event)=>goToPostDashboard(event)} id="editPost">
+      <div class="q1">
+      <label>Tags</label>
       <input type="text" name="tags" defaultValue={tags}/>
+      </div>
+      <div class="q2">
+      <label>Address</label>
+
       <input type="text" name="addr" defaultValue={addr}/>
+      </div>
       <button type="submit">Edit</button>
       </form>
+      </div>
     </>
   )
 }

@@ -40,11 +40,22 @@ function EditUser(props) {
 	};
 
   return (
-    <form method='POST' onSubmit={(event)=>editUserFunc(event)}>
-		  <input type='email' name='email' placeholder='Enter new email' value={inputval.email} onChange={onInputChange}
+    <div id="editU">
+      <h1>User Information</h1>
+    <form method='POST' onSubmit={(event)=>editUserFunc(event)} id="editUser">
+		  <div className='q1'>
+        <label>E-mail</label>
+      <input type='email' name='email' placeholder='Enter new email' value={inputval.email} onChange={onInputChange}
 			required/>
+      </div>
+
+      <div className='q2'>
+      <label>Birthday</label>
 		  <input type='date' name='dob' value={inputval.dob} onChange={onInputChange} required></input>
-		  <select name='gender' defaultValue={inputval.gender} onChange={onInputChange} required>
+		  </div>
+      <div className='q3'>
+      <label>Gender</label>
+      <select name='gender' defaultValue={inputval.gender} onChange={onInputChange} required>
         <option disabled>Gender</option>
         <option>Female</option>
         <option>Male</option>
@@ -52,8 +63,10 @@ function EditUser(props) {
         <option>Other</option>
         <option>Prefer not to say</option>
 		  </select>
+      </div>
       <button type='submit'>Submit</button> 
     </form>
+    </div>
   );
 };
 export default EditUser;
